@@ -1,0 +1,7 @@
+{
+  "package_name": "ex09",
+  "non_idl_tuples": [
+    "/home/dolganin/ros2_ws/ex09:src/msg/Fullname.msg",
+    "/home/dolganin/ros2_ws/ex09:src/srv/Fullnamesum.srv"
+  ]
+}

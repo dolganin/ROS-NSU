@@ -1,0 +1,6 @@
+Invoking command in '/home/dolganin/ros2_ws/sbespalov/build/sbespalov': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/dolganin/ros2_ws/sbespalov -DCMAKE_INSTALL_PREFIX=/home/dolganin/ros2_ws/sbespalov/install/sbespalov
+Invoked command in '/home/dolganin/ros2_ws/sbespalov/build/sbespalov' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/dolganin/ros2_ws/sbespalov -DCMAKE_INSTALL_PREFIX=/home/dolganin/ros2_ws/sbespalov/install/sbespalov
+Invoking command in '/home/dolganin/ros2_ws/sbespalov/build/sbespalov': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/dolganin/ros2_ws/sbespalov/build/sbespalov -- -j12 -l12
+Invoked command in '/home/dolganin/ros2_ws/sbespalov/build/sbespalov' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/dolganin/ros2_ws/sbespalov/build/sbespalov -- -j12 -l12
+Invoking command in '/home/dolganin/ros2_ws/sbespalov/build/sbespalov': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/dolganin/ros2_ws/sbespalov/build/sbespalov
+Invoked command in '/home/dolganin/ros2_ws/sbespalov/build/sbespalov' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/dolganin/ros2_ws/sbespalov/build/sbespalov

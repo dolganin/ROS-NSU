@@ -1,0 +1,2 @@
+Invoking command in '/home/dolganin/ros2_ws/sbespalov/build/sbespalov': /usr/bin/cmake /home/dolganin/ros2_ws/sbespalov -DCMAKE_INSTALL_PREFIX=/home/dolganin/ros2_ws/sbespalov/install/sbespalov
+Invoked command in '/home/dolganin/ros2_ws/sbespalov/build/sbespalov' returned '1': /usr/bin/cmake /home/dolganin/ros2_ws/sbespalov -DCMAKE_INSTALL_PREFIX=/home/dolganin/ros2_ws/sbespalov/install/sbespalov

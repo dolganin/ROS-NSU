@@ -1,0 +1,6 @@
+Invoking command in '/home/dolganin/ros2_ws/ex09/build/ex09': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/dolganin/ros2_ws/ex09 -DCMAKE_INSTALL_PREFIX=/home/dolganin/ros2_ws/ex09/install/ex09
+Invoked command in '/home/dolganin/ros2_ws/ex09/build/ex09' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/dolganin/ros2_ws/ex09 -DCMAKE_INSTALL_PREFIX=/home/dolganin/ros2_ws/ex09/install/ex09
+Invoking command in '/home/dolganin/ros2_ws/ex09/build/ex09': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/dolganin/ros2_ws/ex09/build/ex09 -- -j12 -l12
+Invoked command in '/home/dolganin/ros2_ws/ex09/build/ex09' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/dolganin/ros2_ws/ex09/build/ex09 -- -j12 -l12
+Invoking command in '/home/dolganin/ros2_ws/ex09/build/ex09': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/dolganin/ros2_ws/ex09/build/ex09
+Invoked command in '/home/dolganin/ros2_ws/ex09/build/ex09' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/dolganin/ros2_ws/ex09/build/ex09
