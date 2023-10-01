@@ -1,0 +1,5 @@
+"{command: "move_forward", s: 2, angle: 1.5}"
+"{command: "turn_right", s: 2, angle: 3.5}"
+"{command: "move_forward", s: 2, angle: 0.5}"
+"{command: "turn_left", s: 5, angle: 2.5}"
+"{command: "move_backward", s: 10}"
