@@ -1,14 +1,15 @@
 import math
-from dicts import dict_linear_x, dict_linear_y
 
 import rclpy
 from rclpy.action import ActionServer
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-
-from action_turtle_commands.action import Messageturtlecommands
+from action_turtle_commands.action import Message
 
 distance_counter = 0
+
+dict_linear_x = {'move_forward': 1, 'move_backward': -1}
+dict_linear_y = {'turn_left': 1, 'turn_right': -1}
 
 class TurtleActionServer(Node):
 
@@ -16,7 +17,7 @@ class TurtleActionServer(Node):
         super().__init__('turtle_commands_action_server')
         self._action_server = ActionServer(
             self,
-            Messageturtlecommands,
+            Message,
             'move_turtle',
             self.execute_callback)
 
@@ -24,7 +25,7 @@ class TurtleActionServer(Node):
         self.get_logger().info('Executing goal...')
 
 
-        feedback_msg = Messageturtlecommands.Feedback()
+        feedback_msg = Message.Feedback()
 
         twist_cmd = Twist()
         self.publisher = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
@@ -38,7 +39,7 @@ class TurtleActionServer(Node):
 
         global distance_counter 
         distance_counter += math.sqrt(twist_cmd.linear.x**2+twist_cmd.linear.y**2)
-        feedback_msg.odom = int(distance_counter)
+        feedback_msg.odom = float(distance_counter)
 
         self.publisher.publish(twist_cmd)
 
@@ -46,7 +47,7 @@ class TurtleActionServer(Node):
         goal_handle.publish_feedback(feedback_msg)
         goal_handle.succeed()
 
-        result = Messageturtlecommands.Result()
+        result = Message.Result()
 
         result.result = True
 
