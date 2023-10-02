@@ -17,7 +17,7 @@ class TurtleActionClient(Node):
 
     def __init__(self):
         super().__init__('turtle_action_client')
-        self._action_client = ActionClient(self, Message, 'turtle_commands')
+        self._action_client = ActionClient(self, Message, 'move_turtle')
 
 
     def send_goal(self):
@@ -30,7 +30,6 @@ class TurtleActionClient(Node):
         goal_msg.s = float(args.distance)
 
         self._action_client.wait_for_server()
-        print(1)
 
         self._send_goal_future = self._action_client.send_goal_async(goal_msg)
 
