@@ -13,7 +13,7 @@ def generate_launch_description():
             name='sim'
         ),
         Node(
-            package='time_travel',
+            package='two_turtles_one_carrot',
             executable='broadcaster',
             name='broadcaster1',
             parameters=[
@@ -21,11 +21,11 @@ def generate_launch_description():
             ]
         ),
         DeclareLaunchArgument(
-            'duration', default_value='5.0',
-            description='Duration between turtle2 started to follow turtle1.'
+            'target_frame', default_value='turtle1',
+            description='Target frame name.'
         ),
         Node(
-            package='time_travel',
+            package='two_turtles_one_carrot',
             executable='broadcaster',
             name='broadcaster2',
             parameters=[
@@ -33,11 +33,11 @@ def generate_launch_description():
             ]
         ),
         Node(
-            package='time_travel',
+            package='two_turtles_one_carrot',
             executable='listener',
             name='listener',
             parameters=[
-                {'duration': LaunchConfiguration('duration')}
+                {'target_frame': LaunchConfiguration('target_frame')}
             ]
         ),
     ])

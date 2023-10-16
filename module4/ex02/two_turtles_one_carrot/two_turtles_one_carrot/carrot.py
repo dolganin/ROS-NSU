@@ -13,17 +13,23 @@ class DynamicFrameBroadcaster(Node):
 
     def __init__(self):
         super().__init__('dynamic_frame_tf2_broadcaster')
-        self.radius = 7
+        self.radius = self.declare_parameter(
+          'radius', 1.0).get_parameter_value().double_value
+        self.direction = self.declare_parameter(
+          'direction_of_rotation', 1).get_parameter_value().integer_value
+        
         self.tf_broadcaster = TransformBroadcaster(self)
         self.timer = self.create_timer(0.1, self.broadcast_timer_callback)
 
     def broadcast_timer_callback(self):
+        seconds, nanosecs= self.get_clock().now().seconds_nanoseconds()
+        time = (seconds + nanosecs*0.000000001)
 
         t = TransformStamped()
 
         turtlesim = Pose()
-        t.transform.translation.x = turtlesim.x + self.radius * math.cos(turtlesim.theta)
-        t.transform.translation.y = turtlesim.y + self.radius * math.sin(turtlesim.theta)
+        t.transform.translation.x = turtlesim.x + self.radius * math.cos(time*self.direction)
+        t.transform.translation.y = turtlesim.x + self.radius * math.sin(time*self.direction)
 
 
         t.header.stamp = self.get_clock().now().to_msg()

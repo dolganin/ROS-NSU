@@ -1,17 +1,3 @@
-# Copyright 2021 Open Source Robotics Foundation, Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import math
 
 from geometry_msgs.msg import Twist
@@ -32,10 +18,8 @@ class FrameListener(Node):
         super().__init__('turtle_tf2_frame_listener')
 
         # Declare and acquire `target_frame` parameter
-        self.target_frame = self.declare_parameter(
-            'target_frame', 'turtle1').get_parameter_value().string_value
         self.duration = self.declare_parameter(
-            'duration', '5.0').get_parameter_value().double_value
+          'duration', 5.0).get_parameter_value().double_value
 
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
@@ -57,7 +41,7 @@ class FrameListener(Node):
     def on_timer(self):
         # Store frame names in variables that will be used to
         # compute transformations
-        from_frame_rel = self.target_frame
+        from_frame_rel = 'turtle1'
         to_frame_rel = 'turtle2'
 
         if self.turtle_spawning_service_ready:
@@ -66,11 +50,13 @@ class FrameListener(Node):
                 # and send velocity commands for turtle2 to reach target_frame
                 try:
                     when = self.get_clock().now() - rclpy.time.Duration(seconds=self.duration)
-                    t = self.tf_buffer.lookup_transform(
-                    to_frame_rel,
-                    from_frame_rel,
-                    when,
-                    timeout=rclpy.duration.Duration(seconds=0.05))
+                    t = self.tf_buffer.lookup_transform_full(
+                            target_frame=to_frame_rel,
+                            target_time=rclpy.time.Time(),
+                            source_frame=from_frame_rel,
+                            source_time=when,
+                            fixed_frame='world',
+                            timeout=rclpy.duration.Duration(seconds=self.duration/100))
                 except TransformException as ex:
                     self.get_logger().info(
                         f'Could not transform {to_frame_rel} to {from_frame_rel}: {ex}')
@@ -101,9 +87,9 @@ class FrameListener(Node):
                 # Note that x, y and theta are defined as floats in turtlesim/srv/Spawn
                 request = Spawn.Request()
                 request.name = 'turtle2'
-                request.x = 4.0
-                request.y = 2.0
-                request.theta = 0.0
+                request.x = float(4)
+                request.y = float(2)
+                request.theta = float(0)
                 # Call request
                 self.result = self.spawner.call_async(request)
                 self.turtle_spawning_service_ready = True
