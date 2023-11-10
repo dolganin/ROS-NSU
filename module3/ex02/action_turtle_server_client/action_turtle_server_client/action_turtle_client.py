@@ -2,14 +2,16 @@ import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
 import argparse
+import time
+import math
 
 from action_turtle_commands.action import Message
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument('--move', type=str, dest='move_args') 
-    parser.add_argument('--angle', type=float, dest='angle_args')
-    parser.add_argument('--distance', type=float, dest='distance')
+    parser.add_argument('--angle', type=str, dest='angle_args')
+    parser.add_argument('--distance', type=str, dest='distance')
     return parser.parse_args()
     
 
@@ -25,15 +27,24 @@ class TurtleActionClient(Node):
         goal_msg = Message.Goal()
         args = parse_arguments()
 
-        goal_msg.angle = float(args.angle_args)
-        goal_msg.command = args.move_args
-        goal_msg.s = float(args.distance)
+        args.angle_args = args.angle_args.split(',')
+        args.move_args = args.move_args.split(',')
+        args.distance = args.distance.split(',')
+        print(args.distance, args.move_args, args.distance)
 
-        self._action_client.wait_for_server()
 
-        self._send_goal_future = self._action_client.send_goal_async(goal_msg)
+        for arguments in zip(args.angle_args, args.move_args, args.distance):
+            goal_msg.angle = math.radians(float(arguments[0]))
+            goal_msg.command = arguments[1]
+            goal_msg.s = float(arguments[2])
+            print(goal_msg.angle, goal_msg.command, goal_msg.s)
 
-        self._send_goal_future.add_done_callback(self.goal_response_callback)
+            self._action_client.wait_for_server()
+
+            self._send_goal_future = self._action_client.send_goal_async(goal_msg)
+            self._send_goal_future.add_done_callback(self.goal_response_callback)
+            time.sleep(1)
+
 
 
     def goal_response_callback(self, future):
@@ -50,7 +61,6 @@ class TurtleActionClient(Node):
     def get_result_callback(self, future):
         result = future.result().result
         self.get_logger().info('Result: {0}'.format(result.result))
-        rclpy.shutdown()
 
 
 def main(args=None):
@@ -61,7 +71,10 @@ def main(args=None):
 
     future = action_client.send_goal()
 
-    rclpy.spin_until_future_complete(action_client, future)
+    try:
+        rclpy.spin_until_future_complete(action_client, future)
+    except:
+        pass
 
 
 if __name__ == '__main__':
