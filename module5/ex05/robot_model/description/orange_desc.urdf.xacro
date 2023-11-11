@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot name="clockwork_orange" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="gazebo.urdf.xacro"/>
+  
+  <link name="orange">
+    <visual>
+     <geometry>
+        <mesh filename="file//$(find robot_model)/details/orange.stl" scale="1.0"/>
+     </geometry>
+     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> 
+    </visual>
+    
+  </link>
+
+
+</robot>

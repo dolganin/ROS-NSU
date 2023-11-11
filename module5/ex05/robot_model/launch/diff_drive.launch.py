@@ -35,8 +35,8 @@ def generate_launch_description():
     # urdf_file  =  os.path.join(pkg_project_description, 'urdf', 'robot.urdf')
     # with open(urdf_file, 'r') as infp:
     #     robot_desc = infp.read()
-    pkg_share = get_package_share_directory('rb_pkg')
-    urdf_path = os.path.join(pkg_share, 'urdf', 'robot.urdf.xacro')
+    pkg_share = get_package_share_directory('robot_model')
+    urdf_path = os.path.join(pkg_share, 'urdf', 'orange_desc.urdf.xacro')
     robot_desc = Command('xacro %s' % urdf_path)
 
     # Setup to launch the simulator and Gazebo world
@@ -50,7 +50,7 @@ def generate_launch_description():
     create = Node(
         package='ros_gz_sim',
         executable='create',
-        arguments=['-name', 'robot',
+        arguments=['-name', 'clockwork_orange',
                    '-topic', 'robot_description',
                    '-x', '0.0',
                    '-y', '0.0',
@@ -90,12 +90,8 @@ def generate_launch_description():
         output='screen'
     )
 
-    # rqt_steering = Node(
-    #     package='rqt_robot_steering',
-    #     executable='rqt_robot_steering')
-
     move_circle = Node(
-        package='rb_pkg',
+        package='robot_model',
         executable='move_circle'
     )
     return LaunchDescription([
