@@ -4,7 +4,7 @@
   <name>robot_description</name>
   <version>0.0.1</version>
   <description>URDF description files for the robot project</description>
-  <maintainer email="p.podstavkin@g.nsu.ru">P. Podstavkin</maintainer>
+  <maintainer email="8yp3r10@gmail.com">dolganin</maintainer>
   <license>Apache 2.0</license>
   <author>P. Podstavkin</author>
 
