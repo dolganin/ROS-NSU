@@ -6,7 +6,7 @@
   <description>URDF description files for the robot project</description>
   <maintainer email="8yp3r10@gmail.com">dolganin</maintainer>
   <license>Apache 2.0</license>
-  <author>P. Podstavkin</author>
+  <author>dolganin</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
