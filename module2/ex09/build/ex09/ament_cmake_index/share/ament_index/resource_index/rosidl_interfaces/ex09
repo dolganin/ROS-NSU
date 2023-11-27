@@ -1,6 +1,0 @@
-msg/Fullname.idl
-msg/Fullname.msg
-srv/Fullnamesum.idl
-srv/Fullnamesum.srv
-srv/Fullnamesum_Request.msg
-srv/Fullnamesum_Response.msg

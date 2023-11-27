@@ -1,6 +1,0 @@
-setup.py
-ex09/__init__.py
-ex09.egg-info/PKG-INFO
-ex09.egg-info/SOURCES.txt
-ex09.egg-info/dependency_links.txt
-ex09.egg-info/top_level.txt

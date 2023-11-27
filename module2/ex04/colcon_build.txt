@@ -1,4 +1,0 @@
-Starting >>> sbespalov
-Finished <<< sbespalov [0.39s]
-
-Summary: 1 package finished [0.51s]
